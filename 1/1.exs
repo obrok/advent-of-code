@@ -1,0 +1,8 @@
+File.read!("input")
+|> String.trim()
+|> String.split()
+|> Enum.map(&String.to_integer/1)
+|> Enum.map(&div(&1, 3) - 2)
+|> Enum.filter(& &1 > 0)
+|> Enum.sum()
+|> IO.inspect()
