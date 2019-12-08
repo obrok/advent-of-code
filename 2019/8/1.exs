@@ -1,0 +1,7 @@
+File.read!("input")
+|> String.trim()
+|> String.graphemes()
+|> Enum.chunk_every(25 * 6)
+|> Enum.min_by(fn layer -> Enum.count(layer, &(&1 == "0")) end)
+|> (fn layer -> Enum.count(layer, &(&1 == "1")) * Enum.count(layer, &(&1 == "2")) end).()
+|> IO.inspect()
