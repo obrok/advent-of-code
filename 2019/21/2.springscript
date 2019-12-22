@@ -1,0 +1,33 @@
+OR D T
+AND H T
+OR T J
+OR D T
+AND E T
+AND I T
+OR T J
+NOT J T
+OR A T
+AND B T
+AND C T
+NOT T T
+AND T J
+NOT A T
+OR T J
+RUN
+
+~(A && B && C) && ((D && H) || (D && E && I))
+
+ ABCDEFGHI
+##.###.#..
+
+ ABCDEFGHI
+#####.###.#..####
+
+ ABCDEFGHI
+###.###.#..####
+
+ ABCDEFGHI
+#####.###.#..####
+
+ ABCDEFGHI
+#...####..###
