@@ -1,21 +1,5 @@
+include("../util.jl")
+
 using Pipe
 
-function groups()
-    result = []
-    item = Set{AbstractString}()
-
-    for line in readlines()
-        if line == ""
-            push!(result, item)
-            item = Set()
-        else
-            matches = @pipe line |> eachmatch(r".", _) |> map(x -> x.match, _)
-            union!(item, matches)
-        end
-    end
-
-    push!(result, item)
-    result
-end
-
-@pipe groups() |> sum(x -> length(x), _) |> println
+@pipe readlines() |> chunk_on(_, "") |> mapreduce(ls -> reduce(union, ls) |> length, +, _) |> println
