@@ -3,12 +3,7 @@ include("../util.jl")
 using Pipe
 
 function parse_rules(rules)
-    result = Dict{String,String}()
-    for line in rules
-        name, rhs = match(r"(\d+): (.*)", line).captures
-        result[name] = rhs
-    end
-    result
+    map(x -> match(r"(\d+): (.*)", x).captures, rules) |> Dict
 end
 
 function build_regex(rules, rule_name="0")
