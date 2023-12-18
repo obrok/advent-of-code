@@ -1,0 +1,18 @@
+name: day17
+version: 0.1.0
+
+# authors:
+#   - name <email@example.com>
+
+# description: |
+#   Short description of day17
+
+dependencies:
+  priority-queue:
+    github: spider-gazelle/priority-queue
+
+# development_dependencies:
+#   webmock:
+#     github: manastech/webmock.cr
+
+# license: MIT

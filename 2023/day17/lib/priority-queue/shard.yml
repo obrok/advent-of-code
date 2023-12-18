@@ -1,0 +1,11 @@
+name: priority-queue
+version: 1.0.1
+crystal: ">= 0.36.1"
+
+dependencies:
+  bisect:
+    github: spider-gazelle/bisect
+
+development_dependencies:
+  ameba:
+    github: veelenga/ameba
