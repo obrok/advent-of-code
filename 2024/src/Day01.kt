@@ -24,5 +24,4 @@ fun main() {
     part2(testInput).println()
     print("Part2: ")
     part2(input).println()
-
 }
