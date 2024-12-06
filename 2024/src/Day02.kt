@@ -36,6 +36,6 @@ fun skipReports(report: List<Int>): List<List<Int>> {
     }
 }
 
-fun parseInput(input: List<String>): List<List<Int>> {
+private fun parseInput(input: List<String>): List<List<Int>> {
     return input.map { it.split(" ").map { x -> x.toInt() } }
 }
