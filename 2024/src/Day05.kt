@@ -52,7 +52,7 @@ fun part2(rules: Rules): Int {
     }
 }
 
-fun parseInput(text: String): Rules {
+private fun parseInput(text: String): Rules {
     val (rules, updates) = text.split("\n\n")
     return Rules(
         rules = rules.split("\n").map {
