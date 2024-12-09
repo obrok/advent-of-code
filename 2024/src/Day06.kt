@@ -6,6 +6,14 @@ data class Position(val x: Int, val y: Int) {
     fun turnRight(): Position {
         return Position(y, -x)
     }
+
+    fun sub(other: Position): Position {
+        return Position(x - other.x, y - other.y)
+    }
+
+    fun neg(): Position {
+        return Position(-x, -y)
+    }
 }
 
 data class Bounds(val lo: Position, val hi: Position) {
