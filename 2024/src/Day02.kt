@@ -11,7 +11,7 @@ fun main() {
     println(part2(parseInput(readInput("Day02"))))
 }
 
-fun part1(input: List<List<Int>>): Int {
+private fun part1(input: List<List<Int>>): Int {
     return input.count { validReport(it) }
 }
 
@@ -22,7 +22,7 @@ fun validReport(report: List<Int>): Boolean {
     return directions && sizes
 }
 
-fun part2(input: List<List<Int>>): Int {
+private fun part2(input: List<List<Int>>): Int {
     return input.count { report ->
         validReport(report) || skipReports(report).any { validReport(it) }
     }
