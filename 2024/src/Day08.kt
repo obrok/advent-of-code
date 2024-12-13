@@ -17,8 +17,8 @@ private fun part1(input: Antennas): Int {
                 for (b in ants) {
                     if (a != b) {
                         val dir = b.sub(a)
-                        val pos1 = b.shift(dir)
-                        val pos2 = a.shift(dir.neg())
+                        val pos1 = b.add(dir)
+                        val pos2 = a.add(dir.neg())
 
                         if (input.bounds.contains(pos1)) {
                             yield(pos1)
@@ -44,13 +44,13 @@ private fun part2(input: Antennas): Int {
                         var temp = b
                         while (input.bounds.contains(temp)) {
                             yield(temp)
-                            temp = temp.shift(dir)
+                            temp = temp.add(dir)
                         }
 
                         temp = a
                         while(input.bounds.contains(temp)) {
                             yield(temp)
-                            temp = temp.shift(dir.neg())
+                            temp = temp.add(dir.neg())
                         }
                     }
                 }

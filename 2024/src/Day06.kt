@@ -1,10 +1,16 @@
-data class Position(val x: Int, val y: Int) {
-    fun shift(dir: Position): Position {
+import kotlin.math.absoluteValue
+
+data class Position(val x: Int, val y: Int): Comparable<Position> {
+    fun add(dir: Position): Position {
         return Position(x + dir.x, y + dir.y)
     }
 
     fun turnRight(): Position {
         return Position(y, -x)
+    }
+
+    fun turnLeft(): Position {
+        return Position(-y, x)
     }
 
     fun sub(other: Position): Position {
@@ -13,6 +19,37 @@ data class Position(val x: Int, val y: Int) {
 
     fun neg(): Position {
         return Position(-x, -y)
+    }
+
+    override fun compareTo(other: Position): Int {
+        val res1 = x.compareTo(other.x)
+
+        return if (res1 == 0) {
+            y.compareTo(other.y)
+        } else {
+            res1
+        }
+    }
+
+    fun neighbours(): Sequence<Position> {
+        return sequence {
+            yield(Position(x + 1, y))
+            yield(Position(x - 1, y))
+            yield(Position(x, y + 1))
+            yield(Position(x, y - 1))
+        }
+    }
+
+    fun abs(): Position {
+        return Position(x.absoluteValue, y.absoluteValue)
+    }
+
+    fun mul(other: Position): Position {
+        return Position(x * other.x, y * other.y)
+    }
+
+    fun flip(): Position {
+        return Position(y, x)
     }
 }
 
@@ -52,7 +89,7 @@ private fun part2(input: PatrolMap): Int {
                 }
 
                 visited.add(Pair(pos, dir))
-                val newPos = pos.shift(dir)
+                val newPos = pos.add(dir)
 
                 if (obstacles.contains(newPos)) {
                     dir = dir.turnRight()
@@ -73,7 +110,7 @@ private fun part1(input: PatrolMap): Int {
 
     while (input.bounds.contains(pos)) {
         visited.add(pos)
-        val newPos = pos.shift(dir)
+        val newPos = pos.add(dir)
 
         if (input.obstacles.contains(newPos)) {
             dir = dir.turnRight()
