@@ -1,3 +1,4 @@
+import kotlin.math.abs
 import kotlin.math.absoluteValue
 
 data class Position(val x: Int, val y: Int): Comparable<Position> {
@@ -19,6 +20,10 @@ data class Position(val x: Int, val y: Int): Comparable<Position> {
 
     fun neg(): Position {
         return Position(-x, -y)
+    }
+
+    fun taxi(other: Position): Int {
+        return abs(x - other.x) + abs(y - other.y)
     }
 
     override fun compareTo(other: Position): Int {
